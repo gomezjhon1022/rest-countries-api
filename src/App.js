@@ -1,9 +1,17 @@
+import { Header } from './components/Header';
+import { Countries } from './components/Countries';
+import { CountryDetail } from './components/CountryDetail/index'
 import './App.css';
+
 
 function App() {
   return (
     <div className="App">
-      <div >nothing</div>
+      <Header />
+      <main>
+        <Countries/>
+        <CountryDetail/>
+      </main>
     </div>
   );
 }
