@@ -1,38 +1,44 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --dark-dark-blue:hsl(209, 23%, 22%);
+  --dark-very-dark-blue:hsl(207, 26%, 17%);
+  --light-very-dark-blue: hsl(200, 15%, 8%);
+  --light-dark-gray: hsl(0, 0%, 52%);
+  --light-very-light-gray:hsl(0, 0%, 98%);
+  --white:hsl(0, 0%, 100%);
+}
+
 .App {
-  text-align: center;
+  width: 100%;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.color-white {
+  color: var(--white);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.color-dark {
+  color: var(--dark-very-dark-blue);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+.background-dark {
+  background-color: var(--dark-dark-blue);
 }
 
-.App-link {
-  color: #61dafb;
+.background-very-dark {
+  background-color: var(--dark-very-dark-blue);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.background-light {
+  background-color: var(--white);
+}
+
+.background-very-gray {
+  background-color: var(--light-very-light-gray);
 }

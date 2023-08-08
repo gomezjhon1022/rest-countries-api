@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  padding: 0 15px;
+  height: 3rem;
+  background-color: var(--dark-dark-blue);
+  color: var(--white);
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  cursor:pointer;
+}
+

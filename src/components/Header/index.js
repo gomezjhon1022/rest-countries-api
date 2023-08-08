@@ -1,13 +1,20 @@
+import './Header.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon } from '@fortawesome/free-solid-svg-icons';
 
-function Header() {
+
+function Header({themeIsLight, setThemeIsLight}) {
+  const handleTheme = () => {
+    setThemeIsLight(!themeIsLight);
+  }
   return (
-  <div className="header">
-    <div>
+  <div className={`header ${themeIsLight?'background-light':'background-dark'}`}>
+    <div className={`header__left ${themeIsLight?'color-dark':'color-white'}`}>
       Where in the world?
     </div>
     <div className="header__right">
-      <span>icon</span>
-      <p>Dark Mode</p>
+      <span className='image' onClick={handleTheme}><FontAwesomeIcon icon={faMoon} className={`${themeIsLight?'color-dark':'color-white'}`} /></span>
+      <p className={`${themeIsLight?'color-dark':'color-white'}`} >Dark Mode</p>
     </div>
   </div>
   )
