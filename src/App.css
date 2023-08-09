@@ -5,12 +5,15 @@
 }
 
 :root {
-  --dark-dark-blue:hsl(209, 23%, 22%);
-  --dark-very-dark-blue:hsl(207, 26%, 17%);
-  --light-very-dark-blue: hsl(200, 15%, 8%);
-  --light-dark-gray: hsl(0, 0%, 52%);
-  --light-very-light-gray:hsl(0, 0%, 98%);
+  --dark-blue:hsl(209, 23%, 22%);
+  --very-dark-blue:hsl(207, 26%, 17%);
+  --black: hsl(200, 15%, 8%);
+  --gray: hsl(0, 0%, 52%);
+  --light-gray:hsl(0, 0%, 98%);
   --white:hsl(0, 0%, 100%);
+
+  --font-size-homepage-items: 14px;
+  --font-size-detail-page: 16px;
 }
 
 .App {
@@ -23,22 +26,25 @@
 }
 
 .color-dark {
-  color: var(--dark-very-dark-blue);
+  color: var(--very-dark-blue);
 }
 
-
-.background-dark {
-  background-color: var(--dark-dark-blue);
+.color-gray {
+  color: var(--gray);
 }
 
-.background-very-dark {
-  background-color: var(--dark-very-dark-blue);
-}
-
-.background-light {
+.background-white {
   background-color: var(--white);
 }
 
-.background-very-gray {
-  background-color: var(--light-very-light-gray);
+.background-dark {
+  background-color: var(--dark-blue);
+}
+
+.background-very-dark {
+  background-color: var(--very-dark-blue);
+}
+
+.background-light-gray {
+  background-color: var(--light-gray);
 }

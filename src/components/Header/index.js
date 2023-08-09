@@ -8,7 +8,7 @@ function Header({themeIsLight, setThemeIsLight}) {
     setThemeIsLight(!themeIsLight);
   }
   return (
-  <div className={`header ${themeIsLight?'background-light':'background-dark'}`}>
+  <div className={`header ${themeIsLight?'background-white':'background-dark'}`}>
     <div className={`header__left ${themeIsLight?'color-dark':'color-white'}`}>
       Where in the world?
     </div>

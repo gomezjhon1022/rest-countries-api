@@ -3,9 +3,10 @@
   justify-content:space-between;
   align-items: center;
   padding: 0 15px;
-  height: 3rem;
+  height: 4rem;
   background-color: var(--dark-dark-blue);
   color: var(--white);
+  font-size: var(--font-size-homepage-items);
 }
 
 .header__right {
