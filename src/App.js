@@ -14,8 +14,8 @@ function App() {
     <div className="App">
       <Header themeIsLight={themeIsLight} setThemeIsLight={setThemeIsLight}/>
       <main className={`${themeIsLight?'background-very-gray':'background-very-dark'}`}>
-        <Countries themeIsLight={themeIsLight}/>
-        <CountryDetail/>
+        {/* <Countries themeIsLight={themeIsLight}/> */}
+        <CountryDetail themeIsLight={themeIsLight}/>
       </main>
     </div>
   );
