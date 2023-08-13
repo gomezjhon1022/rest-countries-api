@@ -2,10 +2,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './CountryDetail.css';
 
-function CountryDetail({themeIsLight}) {
+function CountryDetail({themeIsLight,isCountryDetail, setCountryDetail}) {
+  const handleDetail = () => {
+    setCountryDetail(!isCountryDetail);
+  }
   return (
     <div className={`detailCountry ${themeIsLight?'color-dark background-light-gray':'color-white'}`}>
-      <button className={`btnBack ${themeIsLight?'color-dark background-white':'color-white'}`}><span className={`arrow ${themeIsLight?'color-dark':'color-white'}`}><FontAwesomeIcon icon={faArrowLeft} /></span>Back</button>
+      <button className={`btnBack ${themeIsLight?'color-dark background-white':'color-white'}`} onClick={handleDetail}><span className={`arrow ${themeIsLight?'color-dark':'color-white'}`}><FontAwesomeIcon icon={faArrowLeft} /></span>Back</button>
       <div className="card__detail">
             <img className='flag__detail' src="https://images.pexels.com/photos/3800834/pexels-photo-3800834.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="flag"/>
             <div className="data__detail">
