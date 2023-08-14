@@ -8,23 +8,26 @@ function Countries({themeIsLight, isCountryDetail, setCountryDetail}) {
     setCountryDetail(!isCountryDetail);
   }
 
-  const API = "https://restcountries.com/v3.1/all"
+  const all = "all";
+  const region = "region/"
+  const API = "https://restcountries.com/v3.1/"
   const [dataCountries,setDataCountries]=useState([]);
   useEffect(() => {
-    getCountries();
+    getCountries(all, "");
   },[]);
 
 
 
-  async function getCountries () {
-    const res = await fetch(API)
+  async function getCountries (world, pref) {
+    let apiUrl =`${API}${pref}${world}`
+    const res = await fetch(apiUrl);
     const data= await res.json();
-    console.log(data);
       setDataCountries(data);
-      console.log(dataCountries)
     }
 
-
+    const handleRegion = (e) => {
+      getCountries(e.target.value, region)
+    }
 
   return (
     <>
@@ -34,7 +37,7 @@ function Countries({themeIsLight, isCountryDetail, setCountryDetail}) {
           <input className={`search__input ${themeIsLight?'background-white':'background-dark color-white'}`} placeholder="Search for a country..." style={{ '--placeholder-color':  themeIsLight ? 'gray' : 'white' }}></input>
         </form>
         <div className="options">
-          <select defaultValue={"empty"} className={`options__container ${themeIsLight?'background-light color-dark':'background-dark color-white'}`}>
+          <select onChange={handleRegion} defaultValue={"empty"} className={`options__container ${themeIsLight?'background-light color-dark':'background-dark color-white'}`}>
             <option value="empty" disabled className='option__placeholder'>Filter by Region</option>
             <option className='option' value="africa">Africa</option>
             <option className='option' value="america">America</option>
@@ -45,7 +48,7 @@ function Countries({themeIsLight, isCountryDetail, setCountryDetail}) {
         </div>
       </div>
       <div className="grid">
-      {dataCountries.map((country, index) => (
+      {dataCountries.map((country) => (
         <div className="card" onClick={handleDetail} key={country.name.common}>
             <img src={country.flags.png} alt="flag" className='flag'/>
             <div className={`data ${themeIsLight?'background-white':'background-dark'}`}>
