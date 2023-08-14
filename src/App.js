@@ -9,15 +9,16 @@ function App() {
 
   const [themeIsLight,setThemeIsLight]=useState(false);
   const [isCountryDetail,setCountryDetail]=useState(false);
+  const [selectedCountry,setSeletedCountry]=useState("");
 
 
   return (
     <div className="App">
       <Header themeIsLight={themeIsLight} setThemeIsLight={setThemeIsLight}/>
       <main className={`${themeIsLight?'background-very-gray':'background-very-dark'}`}>
-        {!isCountryDetail&&<Countries themeIsLight={themeIsLight} isCountryDetail={isCountryDetail} setCountryDetail={setCountryDetail}/>
+        {!isCountryDetail&&<Countries themeIsLight={themeIsLight} isCountryDetail={isCountryDetail} setCountryDetail={setCountryDetail} setSeletedCountry={setSeletedCountry}/>
         }
-        {isCountryDetail&&<CountryDetail themeIsLight={themeIsLight} isCountryDetail={isCountryDetail} setCountryDetail={setCountryDetail}/>
+        {isCountryDetail&&<CountryDetail themeIsLight={themeIsLight} isCountryDetail={isCountryDetail} setCountryDetail={setCountryDetail} selectedCountry={selectedCountry}/>
         }
 
       </main>

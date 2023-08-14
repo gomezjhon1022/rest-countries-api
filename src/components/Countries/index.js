@@ -3,8 +3,10 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import './Countries.css';
 import { useEffect, useState } from 'react';
 
-function Countries({themeIsLight, isCountryDetail, setCountryDetail}) {
-  const handleDetail = () => {
+function Countries({themeIsLight, isCountryDetail, setCountryDetail, setSeletedCountry}) {
+  const handleDetail = (country) => {
+    console.log(country);
+    setSeletedCountry(country);
     setCountryDetail(!isCountryDetail);
   }
 
@@ -49,7 +51,7 @@ function Countries({themeIsLight, isCountryDetail, setCountryDetail}) {
       </div>
       <div className="grid">
       {dataCountries.map((country) => (
-        <div className="card" onClick={handleDetail} key={country.name.common}>
+        <div className="card" onClick={()=>handleDetail(country)} key={country.name.common}>
             <img src={country.flags.png} alt="flag" className='flag'/>
             <div className={`data ${themeIsLight?'background-white':'background-dark'}`}>
               <div className={`name ${themeIsLight ? 'color-dark' : 'color-white'}`} >{country.name.common}
