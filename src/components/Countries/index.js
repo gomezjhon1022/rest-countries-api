@@ -3,17 +3,22 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import './Countries.css';
 import { useEffect, useState } from 'react';
 
-function Countries({themeIsLight, isCountryDetail, setCountryDetail, setSeletedCountry}) {
+function Countries({themeIsLight, isCountryDetail, setCountryDetail, setSeletedCountry, setSearchValue, searchValue}) {
+
+  const all = "all";
+  const region = "region/"
+  const API = "https://restcountries.com/v3.1/"
+  const [dataCountries,setDataCountries]=useState([]);
+  const [countriesFiltered, setCountriesFiltered]=useState([]);
+  let searched="";
+
+
   const handleDetail = (country) => {
     console.log(country);
     setSeletedCountry(country);
     setCountryDetail(!isCountryDetail);
   }
 
-  const all = "all";
-  const region = "region/"
-  const API = "https://restcountries.com/v3.1/"
-  const [dataCountries,setDataCountries]=useState([]);
   useEffect(() => {
     getCountries(all, "");
   },[]);
@@ -31,12 +36,30 @@ function Countries({themeIsLight, isCountryDetail, setCountryDetail, setSeletedC
       getCountries(e.target.value, region)
     }
 
+    const handleInput = (e) => {
+      searched = (e.target.value.toLowerCase());
+      console.log("searched", searched)
+    }
+
+    const handleSearch = (e) => {
+      e.preventDefault();
+      console.log("data countries",dataCountries);
+      console.log("esto envia el boton",searched);
+      setSearchValue(searched);
+      const paisesfiltrados = dataCountries.filter( (country1) => {
+        return country1.name.common.toLowerCase()===searched;
+      })
+
+      setCountriesFiltered(paisesfiltrados);
+      console.log("return del filter", paisesfiltrados);
+    }
+
   return (
     <>
       <div className={`search__container ${themeIsLight?'background-light-gray':'background-very-dark'}`}>
         <form className={`search ${themeIsLight?'background-very-gray':'background-very-dark'}`}>
-          <a className={`search__icon ${themeIsLight?'background-white':'background-dark'}`}><FontAwesomeIcon icon={faMagnifyingGlass} className={`${themeIsLight?'color-gray':'color-white'}`}  /></a>
-          <input className={`search__input ${themeIsLight?'background-white':'background-dark color-white'}`} placeholder="Search for a country..." style={{ '--placeholder-color':  themeIsLight ? 'gray' : 'white' }}></input>
+          <span  onClick={handleSearch} className={`search__icon ${themeIsLight?'background-white':'background-dark'}`}><FontAwesomeIcon icon={faMagnifyingGlass} className={`${themeIsLight?'color-gray':'color-white'}`}  /></span>
+          <input onChange={handleInput} className={`search__input ${themeIsLight?'background-white':'background-dark color-white'}`} placeholder="Search for a country..." style={{ '--placeholder-color':  themeIsLight ? 'gray' : 'white' }}></input>
         </form>
         <div className="options">
           <select onChange={handleRegion} defaultValue={"empty"} className={`options__container ${themeIsLight?'background-light color-dark':'background-dark color-white'}`}>
@@ -50,20 +73,36 @@ function Countries({themeIsLight, isCountryDetail, setCountryDetail, setSeletedC
         </div>
       </div>
       <div className="grid">
-      {dataCountries.map((country) => (
-        <div className="card" onClick={()=>handleDetail(country)} key={country.name.common}>
-            <img src={country.flags.png} alt="flag" className='flag'/>
-            <div className={`data ${themeIsLight?'background-white':'background-dark'}`}>
-              <div className={`name ${themeIsLight ? 'color-dark' : 'color-white'}`} >{country.name.common}
+        {countriesFiltered.length > 0 || searched!==""?(
+          countriesFiltered.map((country) => (
+          <div className="card" onClick={()=>handleDetail(country)} key={country.name.common}>
+              <img src={country.flags.png} alt="flag" className='flag'/>
+              <div className={`data ${themeIsLight?'background-white':'background-dark'}`}>
+                <div className={`name ${themeIsLight ? 'color-dark' : 'color-white'}`} >{country.name.common}
+                </div>
+                <div className={`description ${themeIsLight?'color-dark':'color-white'}`}>
+                  <div className={`population ${themeIsLight?'color-dark':'color-white'}`}>Population: {country.population}</div>
+                  <div className={`region ${themeIsLight?'color-dark':'color-white'}`}>Region: {country.region}</div>
+                  <div className={`capital ${themeIsLight?'color-dark':'color-white'}`}>Capital: {country.capital}</div>
+                </div>
               </div>
-              <div className={`description ${themeIsLight?'color-dark':'color-white'}`}>
-                <div className={`population ${themeIsLight?'color-dark':'color-white'}`}>Population: {country.population}</div>
-                <div className={`region ${themeIsLight?'color-dark':'color-white'}`}>Region: {country.region}</div>
-                <div className={`capital ${themeIsLight?'color-dark':'color-white'}`}>Capital: {country.capital}</div>
+          </div>
+        ))):(
+        dataCountries.map((country) => (
+          <div className="card" onClick={()=>handleDetail(country)} key={country.name.common}>
+              <img src={country.flags.png} alt="flag" className='flag'/>
+              <div className={`data ${themeIsLight?'background-white':'background-dark'}`}>
+                <div className={`name ${themeIsLight ? 'color-dark' : 'color-white'}`} >{country.name.common}
+                </div>
+                <div className={`description ${themeIsLight?'color-dark':'color-white'}`}>
+                  <div className={`population ${themeIsLight?'color-dark':'color-white'}`}>Population: {country.population}</div>
+                  <div className={`region ${themeIsLight?'color-dark':'color-white'}`}>Region: {country.region}</div>
+                  <div className={`capital ${themeIsLight?'color-dark':'color-white'}`}>Capital: {country.capital}</div>
+                </div>
               </div>
-            </div>
-        </div>
-      ))}
+          </div>
+        )))
+        }
       </div>
     </>
   )
