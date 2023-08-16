@@ -57,7 +57,7 @@ function Countries({themeIsLight, isCountryDetail, setCountryDetail, setSeletedC
   return (
     <>
       <div className={`search__container ${themeIsLight?'background-light-gray':'background-very-dark'}`}>
-        <form className={`search ${themeIsLight?'background-very-gray':'background-very-dark'}`}>
+        <form className={`search ${themeIsLight?'background-very-gray':'background-very-dark'}`} onSubmit={handleSearch}>
           <span  onClick={handleSearch} className={`search__icon ${themeIsLight?'background-white':'background-dark'}`}><FontAwesomeIcon icon={faMagnifyingGlass} className={`${themeIsLight?'color-gray':'color-white'}`}  /></span>
           <input onChange={handleInput} className={`search__input ${themeIsLight?'background-white':'background-dark color-white'}`} placeholder="Search for a country..." style={{ '--placeholder-color':  themeIsLight ? 'gray' : 'white' }}></input>
         </form>
