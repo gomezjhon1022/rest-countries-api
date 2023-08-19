@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './CountryDetail.css';
 
-function CountryDetail({themeIsLight,isCountryDetail, setCountryDetail, selectedCountry}) {
+function CountryDetail({themeIsLight,isCountryDetail, setCountryDetail, selectedCountry, dataCountries, setDataCountries}) {
   const handleDetail = () => {
     setCountryDetail(!isCountryDetail);
   }
@@ -11,8 +11,16 @@ function CountryDetail({themeIsLight,isCountryDetail, setCountryDetail, selected
   const languageNames = Object.entries(selectedCountry.languages).map(([code, name]) => name);
   const languagesList = languageNames.join(", ");
   const borderCountries =selectedCountry.borders;
+  const borderCountriesCompleteName = [];
+  borderCountries.forEach(element => {
+    const b = dataCountries.filter((country1) => {
+      return country1.cca3===element
+    })
+    borderCountriesCompleteName.push(b);
+  });
+  // IRQ JOR KWT OMN QAT ARE YEM
   const tld = selectedCountry.tld[0];
-  console.log(borderCountries);
+  console.log(borderCountriesCompleteName);
   return (
     <div className={`detailCountry ${themeIsLight?'color-dark background-light-gray':'color-white'}`}>
       <button className={`btnBack ${themeIsLight?'color-dark background-white':'color-white'}`} onClick={handleDetail}><span className={`arrow ${themeIsLight?'color-dark':'color-white'}`}><FontAwesomeIcon icon={faArrowLeft} /></span>Back</button>
@@ -33,8 +41,10 @@ function CountryDetail({themeIsLight,isCountryDetail, setCountryDetail, selected
               <div>
                 <div className="border__countries"><span className='negrita'>Border Countries</span></div>
                 <div className="border__container">
-                  {borderCountries?.map((border)=>(
-                  <div className={`border ${themeIsLight?'color-dark background-white':'color-white'}`} key={border}>{border}</div>
+                  {borderCountriesCompleteName?.map((border1)=>(
+                    border1.map((border)=> (
+                      <div className={`border ${themeIsLight?'color-dark background-white':'color-white'}`} key={border.cca3}>{border.name.common}</div>
+                    ))
                   ))
                   }
                 </div>

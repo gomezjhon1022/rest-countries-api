@@ -3,12 +3,11 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import './Countries.css';
 import { useEffect, useState } from 'react';
 
-function Countries({themeIsLight, isCountryDetail, setCountryDetail, setSeletedCountry, setSearchValue, searchValue}) {
+function Countries({themeIsLight, isCountryDetail, setCountryDetail, setSeletedCountry, setSearchValue, searchValue, dataCountries, setDataCountries}) {
 
   const all = "all";
   const region = "region/"
   const API = "https://restcountries.com/v3.1/"
-  const [dataCountries,setDataCountries]=useState([]);
   const [countriesFiltered, setCountriesFiltered]=useState([]);
   let searched="";
 
