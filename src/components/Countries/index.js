@@ -3,14 +3,13 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import './Countries.css';
 import { useEffect, useState } from 'react';
 
-function Countries({themeIsLight, setSearchValue, dataCountries, setDataCountries, setSeletedCountry, setCountryDetail, isCountryDetail}) {
+function Countries({themeIsLight,searchValue, setSearchValue, dataCountries, setDataCountries, setSeletedCountry, setCountryDetail, isCountryDetail}) {
 
   const all = "all";
   const region = "region/"
   const API = "https://restcountries.com/v3.1/"
   const [countriesFiltered, setCountriesFiltered]=useState([]);
-  let searched="";
-
+  let searched = "";
 
   const handleDetail = (country) => {
     setSeletedCountry(country);
@@ -37,13 +36,13 @@ function Countries({themeIsLight, setSearchValue, dataCountries, setDataCountrie
     }
 
     const handleInput = (e) => {
-      searched = (e.target.value.toLowerCase());
+      setSearchValue(e.target.value.toLowerCase());
     }
 
     const handleSearch = (e) => {
       e.preventDefault();
       const paisesfiltrados = dataCountries.filter( (country1) => {
-        return country1.name.common.toLowerCase()===searched;
+        return country1.name.common.toLowerCase()===searchValue;
       })
       setCountriesFiltered(paisesfiltrados);
     }
@@ -57,12 +56,12 @@ function Countries({themeIsLight, setSearchValue, dataCountries, setDataCountrie
         </form>
         <div className="options">
           <select onChange={handleRegion} defaultValue={"empty"} className={`options__container ${themeIsLight?'background-light color-dark':'background-dark color-white'}`}>
-            <option value="all" className='option__placeholder'>Filter by Region</option>
-            <option className='option' value="africa">Africa</option>
-            <option className='option' value="america">America</option>
-            <option className='option' value="asia">Asia</option>
-            <option className='option' value="europe">Europe</option>
-            <option className='option' value="oceania">Oceania</option>
+              <option value="all" className='option__placeholder'>Filter by Region</option>
+              <option className='option' value="africa">Africa</option>
+              <option className='option' value="america">America</option>
+              <option className='option' value="asia">Asia</option>
+              <option className='option' value="europe">Europe</option>
+              <option className='option' value="oceania">Oceania</option>
           </select>
         </div>
       </div>
