@@ -29,7 +29,11 @@ function Countries({themeIsLight, setSearchValue, dataCountries, setDataCountrie
     }
 
     const handleRegion = (e) => {
-      getCountries(e.target.value, region)
+      if (e.target.value ==="all") {
+        getCountries(all, "");
+      } else {
+        getCountries(e.target.value, region)
+      }
     }
 
     const handleInput = (e) => {
@@ -38,11 +42,9 @@ function Countries({themeIsLight, setSearchValue, dataCountries, setDataCountrie
 
     const handleSearch = (e) => {
       e.preventDefault();
-      setSearchValue(searched);
       const paisesfiltrados = dataCountries.filter( (country1) => {
         return country1.name.common.toLowerCase()===searched;
       })
-
       setCountriesFiltered(paisesfiltrados);
     }
 
@@ -55,7 +57,7 @@ function Countries({themeIsLight, setSearchValue, dataCountries, setDataCountrie
         </form>
         <div className="options">
           <select onChange={handleRegion} defaultValue={"empty"} className={`options__container ${themeIsLight?'background-light color-dark':'background-dark color-white'}`}>
-            <option value="empty" disabled className='option__placeholder'>Filter by Region</option>
+            <option value="all" className='option__placeholder'>Filter by Region</option>
             <option className='option' value="africa">Africa</option>
             <option className='option' value="america">America</option>
             <option className='option' value="asia">Asia</option>
