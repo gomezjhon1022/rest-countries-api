@@ -3,7 +3,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import './Countries.css';
 import { useEffect, useState } from 'react';
 
-function Countries({themeIsLight, isCountryDetail, setCountryDetail, setSeletedCountry, setSearchValue, searchValue, dataCountries, setDataCountries}) {
+function Countries({themeIsLight, setSearchValue, dataCountries, setDataCountries, setSeletedCountry, setCountryDetail, isCountryDetail}) {
 
   const all = "all";
   const region = "region/"
@@ -13,7 +13,6 @@ function Countries({themeIsLight, isCountryDetail, setCountryDetail, setSeletedC
 
 
   const handleDetail = (country) => {
-    console.log(country);
     setSeletedCountry(country);
     setCountryDetail(!isCountryDetail);
   }
@@ -21,8 +20,6 @@ function Countries({themeIsLight, isCountryDetail, setCountryDetail, setSeletedC
   useEffect(() => {
     getCountries(all, "");
   },[]);
-
-
 
   async function getCountries (world, pref) {
     let apiUrl =`${API}${pref}${world}`
@@ -37,20 +34,16 @@ function Countries({themeIsLight, isCountryDetail, setCountryDetail, setSeletedC
 
     const handleInput = (e) => {
       searched = (e.target.value.toLowerCase());
-      console.log("searched", searched)
     }
 
     const handleSearch = (e) => {
       e.preventDefault();
-      console.log("data countries",dataCountries);
-      console.log("esto envia el boton",searched);
       setSearchValue(searched);
       const paisesfiltrados = dataCountries.filter( (country1) => {
         return country1.name.common.toLowerCase()===searched;
       })
 
       setCountriesFiltered(paisesfiltrados);
-      console.log("return del filter", paisesfiltrados);
     }
 
   return (

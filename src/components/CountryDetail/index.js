@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './CountryDetail.css';
 
-function CountryDetail({themeIsLight,isCountryDetail, setCountryDetail, selectedCountry, dataCountries, setDataCountries}) {
+function CountryDetail({themeIsLight,isCountryDetail, setCountryDetail, selectedCountry, dataCountries, setSeletedCountry}) {
   const handleDetail = () => {
     setCountryDetail(!isCountryDetail);
   }
@@ -18,9 +18,13 @@ function CountryDetail({themeIsLight,isCountryDetail, setCountryDetail, selected
     })
     borderCountriesCompleteName.push(b);
   });
-  // IRQ JOR KWT OMN QAT ARE YEM
+
+    const handleDetail2 = (country) => {
+    setSeletedCountry(country);
+  }
+
+
   const tld = selectedCountry.tld[0];
-  console.log(borderCountriesCompleteName);
   return (
     <div className={`detailCountry ${themeIsLight?'color-dark background-light-gray':'color-white'}`}>
       <button className={`btnBack ${themeIsLight?'color-dark background-white':'color-white'}`} onClick={handleDetail}><span className={`arrow ${themeIsLight?'color-dark':'color-white'}`}><FontAwesomeIcon icon={faArrowLeft} /></span>Back</button>
@@ -43,7 +47,7 @@ function CountryDetail({themeIsLight,isCountryDetail, setCountryDetail, selected
                 <div className="border__container">
                   {borderCountriesCompleteName?.map((border1)=>(
                     border1.map((border)=> (
-                      <div className={`border ${themeIsLight?'color-dark background-white':'color-white'}`} key={border.cca3}>{border.name.common}</div>
+                      <div className={`border ${themeIsLight?'color-dark background-white':'color-white'}`} key={border.cca3} onClick={()=> handleDetail2(border)}>{border.name.common}</div>
                     ))
                   ))
                   }

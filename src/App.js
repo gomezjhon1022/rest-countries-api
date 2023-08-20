@@ -21,7 +21,7 @@ function App() {
           searchValue={searchValue} setSearchValue={setSearchValue} dataCountries={dataCountries} setDataCountries={setDataCountries}
         />
         }
-        {isCountryDetail&&<CountryDetail themeIsLight={themeIsLight} isCountryDetail={isCountryDetail} setCountryDetail={setCountryDetail} selectedCountry={selectedCountry} dataCountries={dataCountries} setDataCountries={setDataCountries}/>
+        {isCountryDetail&&<CountryDetail themeIsLight={themeIsLight} isCountryDetail={isCountryDetail} setCountryDetail={setCountryDetail} selectedCountry={selectedCountry} dataCountries={dataCountries} setDataCountries={setDataCountries}  setSeletedCountry={setSeletedCountry}/>
         }
 
       </main>
