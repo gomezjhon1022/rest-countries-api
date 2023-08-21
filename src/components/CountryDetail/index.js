@@ -10,7 +10,7 @@ function CountryDetail({themeIsLight,isCountryDetail, setCountryDetail, selected
   const firstCurrencie = Object.keys(selectedCountry.currencies)[0];
   const languageNames = Object.entries(selectedCountry.languages).map(([code, name]) => name);
   const languagesList = languageNames.join(", ");
-  const borderCountries =selectedCountry.borders;
+  const borderCountries =selectedCountry.borders || [];
   const borderCountriesCompleteName = [];
   borderCountries.forEach(element => {
     const b = dataCountries.filter((country1) => {
