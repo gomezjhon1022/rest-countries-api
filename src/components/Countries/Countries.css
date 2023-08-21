@@ -26,6 +26,7 @@
   display: flex;
   height: 40px;
   width: 100%;
+  max-width: 360px;
   font-size: var(--font-size-homepage-items);
 }
 
@@ -55,12 +56,15 @@
   height: auto;
   padding: 0 20px;
   display: grid;
+  place-items: center;
   gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
 }
 
 .card {
   height: 350px;
   width: 100%;
+  max-width: 270px;
   border-radius:8px;
   overflow: hidden;
   cursor: pointer;
@@ -92,6 +96,27 @@
 
 .detailCountry {
   margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+
+  .search__container {
+    display: flex;
+    padding: 40px 60px;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .options {
+    margin-top: 0;
+  }
+  .grid {
+    padding: 20px 60px;
+    gap:60px
+  }
+  /* .search__container {
+    height: auto;
+    padding: 20px 20px;
+  } */
 }
 
 
