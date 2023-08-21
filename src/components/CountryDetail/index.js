@@ -35,7 +35,7 @@ function CountryDetail({themeIsLight,isCountryDetail, setCountryDetail, selected
               <div className='data__container'>
                 <div className='initialdata'>
                   <div className="nativeName__detail"><span className='negrita'>Native Name:</span> {selectedCountry.name.nativeName[firstLanguage]?.common}</div>
-                  <div className="population__detail"><span className='negrita'>Population:</span> {selectedCountry.population}</div>
+                  <div className="population__detail"><span className='negrita'>Population:</span> {selectedCountry.population.toLocaleString('en-US')}</div>
                   <div className="region__detail"><span className='negrita'>Region:</span> {selectedCountry.region}</div>
                   <div className="subRegion__detail"><span className='negrita'>Sub Region:</span> {selectedCountry.subregion}</div>
                   <div className="capital__detail"><span className='negrita'>Capital:</span> {selectedCountry.capital}</div>

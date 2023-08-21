@@ -74,7 +74,7 @@ function Countries({themeIsLight,searchValue, setSearchValue, dataCountries, set
                 <div className={`name ${themeIsLight ? 'color-dark' : 'color-white'}`} >{country.name.common}
                 </div>
                 <div className={`description ${themeIsLight?'color-dark':'color-white'}`}>
-                  <div className={`population ${themeIsLight?'color-dark':'color-white'}`}>Population: {country.population}</div>
+                  <div className={`population ${themeIsLight?'color-dark':'color-white'}`}>Population: {country.population.toLocaleString('en-US')}</div>
                   <div className={`region ${themeIsLight?'color-dark':'color-white'}`}>Region: {country.region}</div>
                   <div className={`capital ${themeIsLight?'color-dark':'color-white'}`}>Capital: {country.capital}</div>
                 </div>
@@ -88,7 +88,7 @@ function Countries({themeIsLight,searchValue, setSearchValue, dataCountries, set
                 <div className={`name ${themeIsLight ? 'color-dark' : 'color-white'}`} >{country.name.common}
                 </div>
                 <div className={`description ${themeIsLight?'color-dark':'color-white'}`}>
-                  <div className={`population ${themeIsLight?'color-dark':'color-white'}`}>Population: {country.population}</div>
+                  <div className={`population ${themeIsLight?'color-dark':'color-white'}`}>Population: {country.population.toLocaleString('en-US')}</div>
                   <div className={`region ${themeIsLight?'color-dark':'color-white'}`}>Region: {country.region}</div>
                   <div className={`capital ${themeIsLight?'color-dark':'color-white'}`}>Capital: {country.capital}</div>
                 </div>
