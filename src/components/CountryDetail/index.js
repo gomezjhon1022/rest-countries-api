@@ -32,17 +32,21 @@ function CountryDetail({themeIsLight,isCountryDetail, setCountryDetail, selected
             <img className='flag__detail' src={selectedCountry.flags.png} alt="flag"/>
             <div className="data__detail">
               <div className="name__detail">{selectedCountry.name.common}</div>
-              <div className="nativeName__detail"><span className='negrita'>Native Name:</span> {selectedCountry.name.nativeName[firstLanguage]?.common}</div>
-              <div className="population__detail"><span className='negrita'>Population:</span> {selectedCountry.population}</div>
-              <div className="region__detail"><span className='negrita'>Region:</span> {selectedCountry.region}</div>
-              <div className="subRegion__detail"><span className='negrita'>Sub Region:</span> {selectedCountry.subregion}</div>
-              <div className="capital__detail"><span className='negrita'>Capital:</span> {selectedCountry.capital}</div>
-              <div className="extraData">
-                <div className="domain__detail"><span className='negrita'>Top Level Domain:</span> {tld}</div>
-                <div className="currencies__detail"><span className='negrita'>Currencies:</span> {selectedCountry.currencies[firstCurrencie]?.name}</div>
-                <div className="languages__detail"><span className='negrita'>Languages:</span> {languagesList}</div>
+              <div className='data__container'>
+                <div className='initialdata'>
+                  <div className="nativeName__detail"><span className='negrita'>Native Name:</span> {selectedCountry.name.nativeName[firstLanguage]?.common}</div>
+                  <div className="population__detail"><span className='negrita'>Population:</span> {selectedCountry.population}</div>
+                  <div className="region__detail"><span className='negrita'>Region:</span> {selectedCountry.region}</div>
+                  <div className="subRegion__detail"><span className='negrita'>Sub Region:</span> {selectedCountry.subregion}</div>
+                  <div className="capital__detail"><span className='negrita'>Capital:</span> {selectedCountry.capital}</div>
+                </div>
+                <div className="extraData">
+                  <div className="domain__detail"><span className='negrita'>Top Level Domain:</span> {tld}</div>
+                  <div className="currencies__detail"><span className='negrita'>Currencies:</span> {selectedCountry.currencies[firstCurrencie]?.name}</div>
+                  <div className="languages__detail"><span className='negrita'>Languages:</span> {languagesList}</div>
+                </div>
               </div>
-              <div>
+              <div className='border__containermain'>
                 <div className="border__countries"><span className='negrita'>Border Countries</span></div>
                 <div className="border__container">
                   {borderCountriesCompleteName?.map((border1)=>(
