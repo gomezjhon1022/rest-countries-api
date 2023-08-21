@@ -90,7 +90,6 @@
   .flag__detail {
     width: 30%;
   }
-
   .border__containermain {
     display: flex;
     justify-content: flex-start;
@@ -99,7 +98,6 @@
   .border__countries {
     margin-right: 15px;
   }
-
   .data__container {
     display: flex;
     justify-content: space-between;
